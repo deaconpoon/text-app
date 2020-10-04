@@ -1,5 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { TextNodeItem } from "./TextNodeItem";
+import { findIndex, Position } from "./find-index";
+import move from "array-move";
 
 interface TextNodeListProps {
   textNodes: Array<TextNode>;
@@ -25,15 +27,30 @@ export const TextNodeList: React.FC<TextNodeListProps> = ({
     searchTextNode(query)
   );
 
-  //Every the query change, save the result to local state
+  // We need to collect an array of height and position data for all of this component's
+  // `Item` children, so we can later us that in calculations to decide when a dragging
+  // `Item` should swap places with its siblings.
+  const positions = useRef<Position[]>([]).current;
+  const setPosition = (i: number, offset: Position) => (positions[i] = offset);
+
+  // Find the ideal index for a dragging item based on its position in the array, and its
+  // current drag offset. If it's different to its current index, we swap this item with that
+  // sibling.
+  const moveItem = (i: number, dragOffset: number) => {
+    const targetIndex = findIndex(i, dragOffset, positions);
+    if (targetIndex !== i)
+      setFilteredTextNodes(move(filteredTextNodes, i, targetIndex));
+  };
+
+  //Every the query and textNodes change, save the result to local state
   useEffect(() => {
     let filtered = searchTextNode(query);
     setFilteredTextNodes(filtered);
-  }, [query]);
+  }, [query, textNodes]);
 
   return (
     <ul className="textNode-list">
-      {filteredTextNodes.map((textNode) => {
+      {filteredTextNodes.map((textNode, i) => {
         return (
           <TextNodeItem
             key={textNode.text}
@@ -42,6 +59,9 @@ export const TextNodeList: React.FC<TextNodeListProps> = ({
             setTextNodePriority={setTextNodePriority}
             setTextNodeText={setTextNodeText}
             deleteTextNode={deleteTextNode}
+            setPosition={setPosition}
+            moveItem={moveItem}
+            i={i}
           ></TextNodeItem>
         );
       })}

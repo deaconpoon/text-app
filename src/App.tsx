@@ -4,6 +4,7 @@ import "./App.scss";
 import { TextNodeList } from "./TextNodeList";
 import { AddTextNodeForm } from "./AddTextNodeForm";
 import { SearchBar } from "./SearchBar";
+import { findIndex, Position } from "./find-index";
 
 const initialTextNodes: Array<TextNode> = [
   { text: "clean litter box", complete: false, priority: 1 },
@@ -79,7 +80,7 @@ const App: React.FC = () => {
   return (
     <React.Fragment>
       <SearchBar setQuery={setQuery}></SearchBar>
-      <AddTextNodeForm addTextNode={addTextNode}></AddTextNodeForm>
+
       <TextNodeList
         query={query}
         searchTextNode={searchTextNode}
@@ -89,6 +90,7 @@ const App: React.FC = () => {
         setTextNodeText={setTextNodeText}
         deleteTextNode={deleteTextNode}
       ></TextNodeList>
+      <AddTextNodeForm addTextNode={addTextNode}></AddTextNodeForm>
     </React.Fragment>
   );
 };
