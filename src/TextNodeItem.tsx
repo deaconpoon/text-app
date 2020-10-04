@@ -43,13 +43,17 @@ export const TextNodeItem: React.FC<TextNodeItemProps> = ({
 
   return (
     <li className="textNode">
-      <form id="textNode">
+      <form className="textNode__form" id="textNode">
         <input
           type="checkbox"
           checked={textNode.complete}
           onChange={() => toggleTextNode(textNode)}
         ></input>
-        <textarea value={text} onChange={handleText}></textarea>
+        <textarea
+          className="textNodeText"
+          value={text}
+          onChange={handleText}
+        ></textarea>
         <select
           onChange={handlePriority}
           name="text-node"
