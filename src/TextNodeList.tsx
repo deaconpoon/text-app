@@ -5,15 +5,17 @@ interface TextNodeListProps {
   textNodes: Array<TextNode>;
   toggleTextNode: ToggleTextNode;
   setTextNodePriority: SetTextNodePriority;
+  setTextNodeText: SetTextNodeText;
 }
 
 export const TextNodeList: React.FC<TextNodeListProps> = ({
   textNodes,
   toggleTextNode,
   setTextNodePriority,
+  setTextNodeText,
 }) => {
   return (
-    <ul>
+    <ul className="textNode-list">
       {textNodes.map((textNode) => {
         return (
           <TextNodeItem
@@ -21,6 +23,7 @@ export const TextNodeList: React.FC<TextNodeListProps> = ({
             textNode={textNode}
             toggleTextNode={toggleTextNode}
             setTextNodePriority={setTextNodePriority}
+            setTextNodeText={setTextNodeText}
           ></TextNodeItem>
         );
       })}

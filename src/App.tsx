@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./App.css";
-import { TextNodeItem } from "./TextNodeItem";
+
 import { TextNodeList } from "./TextNodeList";
 import { AddTextNodeForm } from "./AddTextNodeForm";
 
@@ -42,19 +42,35 @@ const App: React.FC = () => {
     setTextNodes(newTextNode);
   };
 
-  const addTextNode: AddTextNode = (newTextNode) => {
-    setTextNodes([
-      ...textNodes,
-      { text: newTextNode, complete: false, priority: 1 },
-    ]);
+  const setTextNodeText: SetTextNodeText = (selectedTextNode, text) => {
+    const newTextNode = textNodes.map((textNode) => {
+      if (textNode === selectedTextNode) {
+        return {
+          ...textNode,
+          text: text,
+        };
+      }
+      return textNode;
+    });
+    setTextNodes(newTextNode);
   };
+
+  const addTextNode: AddTextNode = (newTextNode) => {
+    newTextNode !== "" &&
+      setTextNodes([
+        ...textNodes,
+        { text: newTextNode, complete: false, priority: 1 },
+      ]);
+  };
+
   return (
     <React.Fragment>
-      <AddTextNodeForm></AddTextNodeForm>
+      <AddTextNodeForm addTextNode={addTextNode}></AddTextNodeForm>
       <TextNodeList
         textNodes={textNodes}
         toggleTextNode={toggleTextNode}
         setTextNodePriority={setTextNodePriority}
+        setTextNodeText={setTextNodeText}
       ></TextNodeList>
     </React.Fragment>
   );

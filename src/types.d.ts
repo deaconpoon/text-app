@@ -12,3 +12,5 @@ type SetTextNodePriority = (
   selectedTextNode: TextNode,
   priority: number
 ) => void;
+
+type SetTextNodeText = (selectedTextNode: TextNode, text: string) => void;
