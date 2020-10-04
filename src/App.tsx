@@ -12,6 +12,7 @@ const initialTextNodes: Array<TextNode> = [
 
 const App: React.FC = () => {
   const [textNodes, setTextNodes] = useState(initialTextNodes);
+  const [query, setQuery] = useState("");
 
   const toggleTextNode: ToggleTextNode = (selectedTextNode) => {
     const newTextNode = textNodes.map((textNode) => {
@@ -67,11 +68,21 @@ const App: React.FC = () => {
     setTextNodes(textNodes.filter((textNode) => textNode !== deletedTextNode));
   };
 
+  const searchTextNode: SearchTextNode = (query) => {
+    const filterTextNodes = textNodes.filter((textNode) => {
+      return textNode.text.includes(query);
+    });
+    console.log(filterTextNodes);
+    return query === "" ? textNodes : filterTextNodes;
+  };
+
   return (
     <React.Fragment>
-      <SearchBar></SearchBar>
+      <SearchBar setQuery={setQuery}></SearchBar>
       <AddTextNodeForm addTextNode={addTextNode}></AddTextNodeForm>
       <TextNodeList
+        query={query}
+        searchTextNode={searchTextNode}
         textNodes={textNodes}
         toggleTextNode={toggleTextNode}
         setTextNodePriority={setTextNodePriority}
