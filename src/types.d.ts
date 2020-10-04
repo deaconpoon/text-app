@@ -6,7 +6,7 @@ type TextNode = {
 
 type ToggleTextNode = (selectedTextNode: TextNode) => void;
 
-type AddTextNode = (newTextNode: string) => void;
+type AddTextNode = (newTextNode: string, priority: number) => void;
 
 type SetTextNodePriority = (
   selectedTextNode: TextNode,
@@ -14,3 +14,5 @@ type SetTextNodePriority = (
 ) => void;
 
 type SetTextNodeText = (selectedTextNode: TextNode, text: string) => void;
+
+type DeleteTextNode = (deletedTextNode: TextNode) => void;

@@ -3,9 +3,10 @@ import "./App.css";
 
 import { TextNodeList } from "./TextNodeList";
 import { AddTextNodeForm } from "./AddTextNodeForm";
+import { SearchBar } from "./SearchBar";
 
 const initialTextNodes: Array<TextNode> = [
-  { text: "clean litter box", complete: true, priority: 1 },
+  { text: "clean litter box", complete: false, priority: 1 },
   { text: "walk the cat", complete: false, priority: 1 },
 ];
 
@@ -55,22 +56,27 @@ const App: React.FC = () => {
     setTextNodes(newTextNode);
   };
 
-  const addTextNode: AddTextNode = (newTextNode) => {
+  const addTextNode: AddTextNode = (newTextNode, priority) => {
     newTextNode !== "" &&
       setTextNodes([
         ...textNodes,
-        { text: newTextNode, complete: false, priority: 1 },
+        { text: newTextNode, complete: false, priority: priority },
       ]);
+  };
+  const deleteTextNode: DeleteTextNode = (deletedTextNode) => {
+    setTextNodes(textNodes.filter((textNode) => textNode !== deletedTextNode));
   };
 
   return (
     <React.Fragment>
+      <SearchBar></SearchBar>
       <AddTextNodeForm addTextNode={addTextNode}></AddTextNodeForm>
       <TextNodeList
         textNodes={textNodes}
         toggleTextNode={toggleTextNode}
         setTextNodePriority={setTextNodePriority}
         setTextNodeText={setTextNodeText}
+        deleteTextNode={deleteTextNode}
       ></TextNodeList>
     </React.Fragment>
   );

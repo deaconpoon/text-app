@@ -1,10 +1,11 @@
-import React, { useState, ChangeEvent, useEffect } from "react";
+import React, { useState, ChangeEvent, useEffect, FormEvent } from "react";
 
 interface TextNodeItemProps {
   textNode: TextNode;
   toggleTextNode: ToggleTextNode;
   setTextNodePriority: SetTextNodePriority;
   setTextNodeText: SetTextNodeText;
+  deleteTextNode: DeleteTextNode;
 }
 
 export const TextNodeItem: React.FC<TextNodeItemProps> = ({
@@ -12,6 +13,7 @@ export const TextNodeItem: React.FC<TextNodeItemProps> = ({
   toggleTextNode,
   setTextNodePriority,
   setTextNodeText,
+  deleteTextNode,
 }) => {
   //set textNode.priority as local state - priority in initiation
   const [priority, setPriority] = useState(textNode.priority);
@@ -25,6 +27,10 @@ export const TextNodeItem: React.FC<TextNodeItemProps> = ({
   const handleText = (e: ChangeEvent<HTMLTextAreaElement>) => {
     e.preventDefault();
     setText(e.target.value);
+  };
+  const handleDelete = (e: FormEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    deleteTextNode(textNode);
   };
 
   useEffect(() => {
@@ -54,6 +60,7 @@ export const TextNodeItem: React.FC<TextNodeItemProps> = ({
           <option value="2">Normal 😉</option>
           <option value="3">Low 🤤</option>
         </select>
+        <button onClick={handleDelete}>Delete</button>
       </form>
     </li>
   );

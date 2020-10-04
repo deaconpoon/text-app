@@ -6,6 +6,7 @@ interface TextNodeListProps {
   toggleTextNode: ToggleTextNode;
   setTextNodePriority: SetTextNodePriority;
   setTextNodeText: SetTextNodeText;
+  deleteTextNode: DeleteTextNode;
 }
 
 export const TextNodeList: React.FC<TextNodeListProps> = ({
@@ -13,6 +14,7 @@ export const TextNodeList: React.FC<TextNodeListProps> = ({
   toggleTextNode,
   setTextNodePriority,
   setTextNodeText,
+  deleteTextNode,
 }) => {
   return (
     <ul className="textNode-list">
@@ -24,6 +26,7 @@ export const TextNodeList: React.FC<TextNodeListProps> = ({
             toggleTextNode={toggleTextNode}
             setTextNodePriority={setTextNodePriority}
             setTextNodeText={setTextNodeText}
+            deleteTextNode={deleteTextNode}
           ></TextNodeItem>
         );
       })}
