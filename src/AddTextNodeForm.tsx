@@ -1,4 +1,5 @@
 import React, { useState, ChangeEvent, FormEvent } from "react";
+import plus from "./asset/plus.svg";
 
 interface AddTextNodeFormProps {
   addTextNode: AddTextNode;
@@ -27,6 +28,7 @@ export const AddTextNodeForm: React.FC<AddTextNodeFormProps> = ({
   return (
     <form className="textNode__add">
       <div className="textNode__add__container">
+        <img className="textNode__search--img" src={plus}></img>
         <input
           placeholder="Write something"
           type="text"
@@ -35,16 +37,16 @@ export const AddTextNodeForm: React.FC<AddTextNodeFormProps> = ({
           onChange={handleChange}
         ></input>
         <div className="textNode__add__priority--container">
-          Priority:{" "}
+          <span className="textNode__add__priority--text">Priority: </span>{" "}
           <select
             onChange={handlePriority}
             name="text-node"
             id="text-node-select"
             value={priority}
           >
-            <option value="1">High 😨</option>
-            <option value="2">Normal 😉</option>
-            <option value="3">Low 🤤</option>
+            <option value="1">High</option>
+            <option value="2">Normal</option>
+            <option value="3">Low</option>
           </select>
         </div>
         <button

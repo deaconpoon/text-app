@@ -80,13 +80,14 @@ const App: React.FC = () => {
   return (
     <body className="body">
       <main className="app">
-        <SearchBar setQuery={setQuery}></SearchBar>
         <AddTextNodeForm addTextNode={addTextNode}></AddTextNodeForm>
+        <SearchBar setQuery={setQuery}></SearchBar>
 
         <TextNodeList
           query={query}
           searchTextNode={searchTextNode}
           textNodes={textNodes}
+          setTextNodes={setTextNodes}
           toggleTextNode={toggleTextNode}
           setTextNodePriority={setTextNodePriority}
           setTextNodeText={setTextNodeText}

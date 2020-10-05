@@ -5,6 +5,7 @@ import move from "array-move";
 
 interface TextNodeListProps {
   textNodes: Array<TextNode>;
+  setTextNodes: React.Dispatch<React.SetStateAction<TextNode[]>>;
   toggleTextNode: ToggleTextNode;
   setTextNodePriority: SetTextNodePriority;
   setTextNodeText: SetTextNodeText;
@@ -15,6 +16,7 @@ interface TextNodeListProps {
 
 export const TextNodeList: React.FC<TextNodeListProps> = ({
   textNodes,
+  setTextNodes,
   toggleTextNode,
   setTextNodePriority,
   setTextNodeText,
@@ -38,8 +40,7 @@ export const TextNodeList: React.FC<TextNodeListProps> = ({
   // sibling.
   const moveItem = (i: number, dragOffset: number) => {
     const targetIndex = findIndex(i, dragOffset, positions);
-    if (targetIndex !== i)
-      setFilteredTextNodes(move(filteredTextNodes, i, targetIndex));
+    if (targetIndex !== i) setTextNodes(move(textNodes, i, targetIndex));
   };
 
   //Every the query and textNodes change, save the result to local state

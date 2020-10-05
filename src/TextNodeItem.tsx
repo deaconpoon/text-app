@@ -87,6 +87,13 @@ export const TextNodeItem: React.FC<TextNodeItemProps> = ({
 
   return (
     <motion.li
+      style={
+        priority == 1
+          ? { borderLeft: "10px solid lightpink" }
+          : priority == 2
+          ? { borderLeft: "10px solid rgb(253, 253, 167)" }
+          : { borderLeft: "10px solid lightgreen" }
+      }
       className="textNode"
       ref={ref}
       initial={false}
@@ -118,7 +125,7 @@ export const TextNodeItem: React.FC<TextNodeItemProps> = ({
     >
       <form className="textNode__form" id="textNode">
         <input
-          className="textNode__checkbox"
+          className="textNode__checkbox "
           type="checkbox"
           checked={textNode.complete}
           onChange={() => toggleTextNode(textNode)}
@@ -137,9 +144,9 @@ export const TextNodeItem: React.FC<TextNodeItemProps> = ({
             id="text-node-select"
             value={priority}
           >
-            <option value="1">High 😨</option>
-            <option value="2">Normal 😉</option>
-            <option value="3">Low 🤤</option>
+            <option value="1">High</option>
+            <option value="2">Normal</option>
+            <option value="3">Low</option>
           </select>
         </div>
         <button className="textNode__delete" onClick={handleDelete}>
