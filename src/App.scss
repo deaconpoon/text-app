@@ -125,8 +125,6 @@ table {
   border-spacing: 0;
 }
 textarea {
-  /* outline: none; */
-  width: 300px;
   resize: vertical;
   border: none;
   background-color: transparent;
@@ -146,6 +144,21 @@ input[type="checkbox"] {
   min-width: 400px;
   max-width: 800px;
   margin: 0 auto;
+
+  &__title {
+    font-family: "Roboto", sans-serif;
+    color: rgb(71, 71, 71);
+    font-size: 5rem;
+    font-weight: 700;
+    text-align: center;
+    margin: 1em 0;
+    &:hover {
+      cursor: default;
+    }
+  }
+  &__upperSection {
+    margin-bottom: 40px;
+  }
 }
 
 .textNode {
@@ -159,6 +172,11 @@ input[type="checkbox"] {
   position: relative;
 
   box-shadow: 1px 2px 6px 0px rgba(99, 99, 99, 0.527);
+
+  &__textarea {
+    width: 100%;
+    font-family: "Roboto", sans-serif;
+  }
 
   &__form {
     display: flex;
@@ -175,7 +193,7 @@ input[type="checkbox"] {
     border-radius: 20px;
     padding: 1em 0;
     height: 30px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     display: flex;
     align-items: center;
 
@@ -202,10 +220,14 @@ input[type="checkbox"] {
     &__checkbox {
       width: 30px;
       height: 30px;
+
       &:hover {
         cursor: pointer;
       }
     }
+  }
+  &__checkbox {
+    margin-right: 1em;
   }
   &__delete {
     background: none;
@@ -214,12 +236,18 @@ input[type="checkbox"] {
     border-radius: 10px;
     padding: 1em;
     color: white;
+    font-weight: 700;
 
     &:hover {
       cursor: pointer;
+      opacity: 80%;
     }
     &:focus {
       outline: none;
+      scale: 80%;
+    }
+    &:active {
+      transform: scale(0.95);
     }
   }
   &__add {
@@ -232,9 +260,6 @@ input[type="checkbox"] {
       align-items: center;
       width: 100%;
       padding: 0 1em 0 2em;
-      @media screen and (min-width: 700px) {
-        padding-right: 2em;
-      }
     }
 
     &__input {
@@ -247,15 +272,20 @@ input[type="checkbox"] {
     &--btn {
       background: none;
       border: none;
-      background-color: lightgreen;
+      background-color: rgb(107, 247, 107);
       border-radius: 10px;
       padding: 1em 1.5em;
-      color: white;
+      color: rgb(224, 224, 224);
+      font-weight: 700;
       &:hover {
         cursor: pointer;
+        opacity: 80%;
       }
       &:focus {
         outline: none;
+      }
+      &:active {
+        transform: scale(0.95);
       }
     }
     &__priority {
@@ -266,11 +296,30 @@ input[type="checkbox"] {
         @media screen and (min-width: 700px) {
           display: flex;
         }
+        @media screen and (min-width: 866px) {
+          margin-right: 2.5em;
+        }
       }
       &--text {
         display: inline-block;
         margin-bottom: 4px;
+        &:hover {
+          cursor: default;
+        }
       }
+    }
+  }
+  &__select {
+    border: none;
+    background-color: white;
+    &:hover {
+      cursor: pointer;
+    }
+    &:focus {
+      outline: none;
+    }
+    @media screen and (min-width: 700px) {
+      margin-left: 1em;
     }
   }
 }

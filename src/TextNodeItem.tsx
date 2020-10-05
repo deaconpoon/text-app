@@ -101,7 +101,7 @@ export const TextNodeItem: React.FC<TextNodeItemProps> = ({
       animate={isDragging ? onTop : flat}
       /*    style={{ background: "pink", height: heights }} */
       whileHover={{ scale: 1.03 }}
-      whileTap={{ scale: 1.12 }}
+      whileTap={{ scale: 1.06 }}
       drag="y"
       dragOriginY={dragOriginY}
       dragConstraints={{ top: 0, bottom: 0 }}
@@ -132,17 +132,19 @@ export const TextNodeItem: React.FC<TextNodeItemProps> = ({
         ></input>
         <textarea
           key={textNode.text}
-          className="textNodeText"
+          className="textNode__textarea"
           value={text}
           onChange={(e) => setText(e.target.value)}
         ></textarea>
-        <div>
-          Priority:{" "}
+        <div className="textNode__add__priority--container">
+          <span className="textNode__add__priority--text">Priority: </span>
+
           <select
             onChange={handlePriority}
             name="text-node"
             id="text-node-select"
             value={priority}
+            className="textNode__select"
           >
             <option value="1">High</option>
             <option value="2">Normal</option>

@@ -37,12 +37,13 @@ export const AddTextNodeForm: React.FC<AddTextNodeFormProps> = ({
           onChange={handleChange}
         ></input>
         <div className="textNode__add__priority--container">
-          <span className="textNode__add__priority--text">Priority: </span>{" "}
+          <span className="textNode__add__priority--text">Priority: </span>
           <select
             onChange={handlePriority}
             name="text-node"
             id="text-node-select"
             value={priority}
+            className="textNode__select"
           >
             <option value="1">High</option>
             <option value="2">Normal</option>

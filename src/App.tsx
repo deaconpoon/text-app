@@ -87,11 +87,24 @@ const App: React.FC = () => {
     return query === "" ? textNodes : filterTextNodes;
   };
 
+  /*  const sortTextNodes: SortTextNodes = (sortOrder) => {
+    const sortedTextNodes =
+      sortOrder == "high"
+        ? textNodes.sort((a, b) => a.priority - b.priority)
+        : textNodes.sort((a, b) => b.priority - a.priority);
+
+    setTextNodes(sortedTextNodes);
+  }; */
+
   return (
     <body className="body">
       <main className="app">
-        <AddTextNodeForm addTextNode={addTextNode}></AddTextNodeForm>
-        <SearchBar setQuery={setQuery}></SearchBar>
+        {/*  <button onClick={() => sortTextNodes("hih")}>sort!</button> */}
+        <div className="app__title">TEXTIFY</div>
+        <div className="app__upperSection">
+          <AddTextNodeForm addTextNode={addTextNode}></AddTextNodeForm>
+          <SearchBar setQuery={setQuery}></SearchBar>
+        </div>
 
         <TextNodeList
           query={query}

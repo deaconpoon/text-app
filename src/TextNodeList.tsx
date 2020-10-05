@@ -12,6 +12,7 @@ interface TextNodeListProps {
   setTextNodeText: SetTextNodeText;
   deleteTextNode: DeleteTextNode;
   searchTextNode: SearchTextNode;
+
   query: string;
 }
 
@@ -23,6 +24,7 @@ export const TextNodeList: React.FC<TextNodeListProps> = ({
   setTextNodeText,
   deleteTextNode,
   searchTextNode,
+
   query,
 }) => {
   //Store searched text node in local state

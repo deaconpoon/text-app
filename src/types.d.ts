@@ -18,3 +18,5 @@ type SetTextNodeText = (selectedTextNode: TextNode, text: string) => void;
 type DeleteTextNode = (deletedTextNode: TextNode) => void;
 
 type SearchTextNode = (text: string) => TextNode[];
+
+type SortTextNodes = (sortOrder: string) => void;
