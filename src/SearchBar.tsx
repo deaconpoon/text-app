@@ -1,15 +1,22 @@
-import React, { useState, ChangeEvent } from "react";
+import React, { useState, ChangeEvent, useRef, useEffect } from "react";
 import search from "./asset/search.svg";
 
 interface SearchBarProps {
   setQuery: React.Dispatch<React.SetStateAction<string>>;
+  query: string;
 }
 
-export const SearchBar: React.FC<SearchBarProps> = ({ setQuery }) => {
+export const SearchBar: React.FC<SearchBarProps> = ({ setQuery, query }) => {
+  const searchRef = useRef<any>(null);
+
   const handleOnChange = (e: ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
     setQuery(e.target.value);
   };
+  useEffect(() => {
+    searchRef.current.focus();
+  }, [query]);
+
   return (
     <form className="textNode__search">
       <div className="textNode__search__container">
@@ -19,6 +26,7 @@ export const SearchBar: React.FC<SearchBarProps> = ({ setQuery }) => {
           src={search}
         ></img>
         <input
+          ref={searchRef}
           name="text node search bar"
           placeholder="Search something"
           className="textNode__search__input"

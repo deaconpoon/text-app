@@ -1,44 +1,35 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+https://elastic-mahavira-834e4e.netlify.app
 
-## Available Scripts
+# 📝 Textify is a web-based, free-text note organizer
 
-In the project directory, you can run:
+<source src="/public/text-demo.mp4" type="video/mp4" width="660">
 
-### `npm start`
+## ✅ Features
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- Create, edit, and delete multiple multi-line, free text notes.
+- Categorization with task priority
+- Allow note priority and sort order to be changed by dragging them from group to group.
+- Add the ability to do a “live” search through notes by their content.
+- State persistence with cookies
+- Simple and clean responsive layout
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+## 🤖 Under the hood
 
-### `npm test`
+- Built with Typescript and Sass for styling
+- Framer motion for dragging animation
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 😠 Challenges
 
-### `npm run build`
+- First time implementing Typescript. Steep learning curve at first but types checking with VS Code intellisense becomes useful to ensure the application is robust and stable
+- TextNode local states change e.g. editing content causes the application to re-render which produces input focus lost when typing bug. I solved the problem by setting the input focus after every key strokes but it is not an ideal solution.
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 💪🏼 Improvement
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+- Implement global state management tools such as Context API or Redux to ensure state immutability
+- Given no time constrain, I will implement categories sorting button and tags
+- Utilize Typescript utility types to more flexibility
+- Testing with jest
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 🚀 To start
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+`npm start`

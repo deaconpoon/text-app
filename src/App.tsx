@@ -102,7 +102,7 @@ const App: React.FC = () => {
         <div className="app__title">TEXTIFY</div>
         <div className="app__upperSection">
           <AddTextNodeForm addTextNode={addTextNode}></AddTextNodeForm>
-          <SearchBar setQuery={setQuery}></SearchBar>
+          <SearchBar query={query} setQuery={setQuery}></SearchBar>
         </div>
 
         <TextNodeList
