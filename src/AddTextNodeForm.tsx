@@ -25,21 +25,36 @@ export const AddTextNodeForm: React.FC<AddTextNodeFormProps> = ({
   };
 
   return (
-    <form>
-      <input type="text" value={newTextNode} onChange={handleChange}></input>
-      <select
-        onChange={handlePriority}
-        name="text-node"
-        id="text-node-select"
-        value={priority}
-      >
-        <option value="1">High 😨</option>
-        <option value="2">Normal 😉</option>
-        <option value="3">Low 🤤</option>
-      </select>
-      <button type="submit" onClick={handleSumbit}>
-        Add Text Node
-      </button>
+    <form className="textNode__add">
+      <div className="textNode__add__container">
+        <input
+          placeholder="Write something"
+          type="text"
+          className="textNode__add__input"
+          value={newTextNode}
+          onChange={handleChange}
+        ></input>
+        <div className="textNode__add__priority--container">
+          Priority:{" "}
+          <select
+            onChange={handlePriority}
+            name="text-node"
+            id="text-node-select"
+            value={priority}
+          >
+            <option value="1">High 😨</option>
+            <option value="2">Normal 😉</option>
+            <option value="3">Low 🤤</option>
+          </select>
+        </div>
+        <button
+          className="textNode__add--btn"
+          type="submit"
+          onClick={handleSumbit}
+        >
+          Add
+        </button>
+      </div>
     </form>
   );
 };

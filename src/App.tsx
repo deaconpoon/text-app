@@ -78,20 +78,22 @@ const App: React.FC = () => {
   };
 
   return (
-    <React.Fragment>
-      <SearchBar setQuery={setQuery}></SearchBar>
+    <body className="body">
+      <main className="app">
+        <SearchBar setQuery={setQuery}></SearchBar>
+        <AddTextNodeForm addTextNode={addTextNode}></AddTextNodeForm>
 
-      <TextNodeList
-        query={query}
-        searchTextNode={searchTextNode}
-        textNodes={textNodes}
-        toggleTextNode={toggleTextNode}
-        setTextNodePriority={setTextNodePriority}
-        setTextNodeText={setTextNodeText}
-        deleteTextNode={deleteTextNode}
-      ></TextNodeList>
-      <AddTextNodeForm addTextNode={addTextNode}></AddTextNodeForm>
-    </React.Fragment>
+        <TextNodeList
+          query={query}
+          searchTextNode={searchTextNode}
+          textNodes={textNodes}
+          toggleTextNode={toggleTextNode}
+          setTextNodePriority={setTextNodePriority}
+          setTextNodeText={setTextNodeText}
+          deleteTextNode={deleteTextNode}
+        ></TextNodeList>
+      </main>
+    </body>
   );
 };
 

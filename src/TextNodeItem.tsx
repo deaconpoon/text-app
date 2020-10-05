@@ -4,8 +4,12 @@ import React, {
   useEffect,
   FormEvent,
   useRef,
+  useCallback,
 } from "react";
+
 import { motion, useMotionValue } from "framer-motion";
+
+import trash from "./asset/delete.svg";
 
 interface TextNodeItemProps {
   textNode: TextNode;
@@ -64,9 +68,9 @@ export const TextNodeItem: React.FC<TextNodeItemProps> = ({
     setPriority(Number(e.target.value));
   };
   const handleText = (e: ChangeEvent<HTMLTextAreaElement>) => {
-    e.preventDefault();
     setText(e.target.value);
   };
+
   const handleDelete = (e: FormEvent<HTMLButtonElement>) => {
     e.preventDefault();
     deleteTextNode(textNode);
@@ -76,6 +80,7 @@ export const TextNodeItem: React.FC<TextNodeItemProps> = ({
     setTextNodePriority(textNode, priority);
   }, [priority]);
 
+  //On every keystroke change, it updates the content in text area into the textNode text property
   useEffect(() => {
     setTextNodeText(textNode, text);
   }, [text]);
@@ -113,26 +118,33 @@ export const TextNodeItem: React.FC<TextNodeItemProps> = ({
     >
       <form className="textNode__form" id="textNode">
         <input
+          className="textNode__checkbox"
           type="checkbox"
           checked={textNode.complete}
           onChange={() => toggleTextNode(textNode)}
         ></input>
         <textarea
+          key={textNode.text}
           className="textNodeText"
           value={text}
-          onChange={handleText}
+          onChange={(e) => setText(e.target.value)}
         ></textarea>
-        <select
-          onChange={handlePriority}
-          name="text-node"
-          id="text-node-select"
-          value={priority}
-        >
-          <option value="1">High 😨</option>
-          <option value="2">Normal 😉</option>
-          <option value="3">Low 🤤</option>
-        </select>
-        <button onClick={handleDelete}>Delete</button>
+        <div>
+          Priority:{" "}
+          <select
+            onChange={handlePriority}
+            name="text-node"
+            id="text-node-select"
+            value={priority}
+          >
+            <option value="1">High 😨</option>
+            <option value="2">Normal 😉</option>
+            <option value="3">Low 🤤</option>
+          </select>
+        </div>
+        <button className="textNode__delete" onClick={handleDelete}>
+          Delete
+        </button>
       </form>
     </motion.li>
   );

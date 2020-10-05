@@ -125,7 +125,7 @@ table {
   border-spacing: 0;
 }
 textarea {
-  outline: none;
+  /* outline: none; */
   width: 300px;
   resize: vertical;
   border: none;
@@ -133,24 +133,128 @@ textarea {
 }
 
 //Component class
+.body {
+  padding: 2em;
+}
+
+.app {
+  min-width: 400px;
+  max-width: 800px;
+  margin: 0 auto;
+}
 
 .textNode {
-  background-color: #ffd4ca;
+  background-color: lightblue;
   font-family: "Roboto", sans-serif;
-  width: 500px;
+  width: 100%;
   border-radius: 10px;
   padding: 1em 0;
+
   margin-bottom: 10px;
   position: relative;
+
   &__form {
     display: flex;
     align-items: center;
     justify-content: space-evenly;
   }
+  &__search {
+    width: 100%;
+
+    background-color: rgb(230, 230, 230);
+    font-family: "Roboto", sans-serif;
+
+    border-radius: 20px;
+    padding: 1em 0;
+    height: 30px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+
+    &__container {
+      display: flex;
+      align-items: center;
+      padding: 0 2em;
+      width: 100%;
+    }
+    &__input {
+      background: none;
+      border: none;
+      width: 100%;
+      line-height: 1.5em;
+      &:focus {
+        outline: none;
+      }
+    }
+    &--img {
+      width: 20px;
+      height: 20px;
+      margin-right: 1em;
+    }
+    &__checkbox {
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+  &__delete {
+    background: none;
+    border: none;
+    background-color: lightcoral;
+    border-radius: 10px;
+    padding: 1em;
+    color: white;
+
+    &:hover {
+      cursor: pointer;
+    }
+    &:focus {
+      outline: none;
+    }
+  }
+  &__add {
+    @extend .textNode__search;
+    background-color: white;
+    border: 1px grey solid;
+
+    &__container {
+      display: flex;
+      width: 100%;
+      padding: 0 2em 0 4.2em;
+    }
+
+    &__input {
+      width: 100%;
+      border: none;
+      &:focus {
+        outline: none;
+      }
+    }
+    &--btn {
+      background: none;
+      border: none;
+      background-color: lightgreen;
+      border-radius: 10px;
+      padding: 1em 1.5em;
+      color: white;
+      &:hover {
+        cursor: pointer;
+      }
+      &:focus {
+        outline: none;
+      }
+    }
+    &__priority {
+      &--container {
+        display: flex;
+        align-items: center;
+      }
+    }
+  }
 }
 .textNode-list {
-  height: 800px;
-  background-color: lightgreen;
+  margin-bottom: 100px;
+
   font-family: "Roboto", sans-serif;
   position: relative;
 }
