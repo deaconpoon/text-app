@@ -47,13 +47,6 @@ export const TextNodeItem: React.FC<TextNodeItemProps> = ({
   // compensate for any movement as the items are re-positioned.
   const dragOriginY = useMotionValue(0);
 
-  // Update the measured position of the item so we can calculate when we should rearrange.
-  useEffect(() => {
-    setPosition(i, {
-      height: ref.current.offsetHeight,
-      top: ref.current.offsetTop,
-    });
-  });
   const onTop = { zIndex: 1 };
   const flat = {
     zIndex: 0,
@@ -72,6 +65,15 @@ export const TextNodeItem: React.FC<TextNodeItemProps> = ({
     deleteTextNode(textNode);
   };
 
+  // Update the measured position of the item so we can calculate when we should rearrange.
+  useEffect(() => {
+    setPosition(i, {
+      height: ref.current.offsetHeight,
+      top: ref.current.offsetTop,
+    });
+  });
+
+  //Update textNode priority whenever priority changes
   useEffect(() => {
     setTextNodePriority(textNode, priority);
   }, [priority]);

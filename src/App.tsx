@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, FormEvent } from "react";
 import cookie from "js-cookie";
 
 import "./App.scss";
@@ -30,7 +30,6 @@ const App: React.FC = () => {
     cookie.set("textNodes", JSON.stringify(newTextNode));
   };
 
-  //Map through textNodes, if it is the selected one, change the priority to the local state priority
   const setTextNodePriority: SetTextNodePriority = (
     selectedTextNode,
     priority
@@ -70,6 +69,7 @@ const App: React.FC = () => {
       ]);
     cookie.set("textNodes", JSON.stringify(newTextNode));
   };
+
   const deleteTextNode: DeleteTextNode = (deletedTextNode) => {
     const deletedTextNodes = textNodes.filter(
       (textNode) => textNode !== deletedTextNode
@@ -87,7 +87,7 @@ const App: React.FC = () => {
     return query === "" ? textNodes : filterTextNodes;
   };
 
-  /*  const sortTextNodes: SortTextNodes = (sortOrder) => {
+  /*   const sortTextNodes: SortTextNodes = (sortOrder) => {
     const sortedTextNodes =
       sortOrder == "high"
         ? textNodes.sort((a, b) => a.priority - b.priority)
@@ -99,7 +99,6 @@ const App: React.FC = () => {
   return (
     <body className="body">
       <main className="app">
-        {/*  <button onClick={() => sortTextNodes("hih")}>sort!</button> */}
         <div className="app__title">TEXTIFY</div>
         <div className="app__upperSection">
           <AddTextNodeForm addTextNode={addTextNode}></AddTextNodeForm>

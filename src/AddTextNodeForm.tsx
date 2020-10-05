@@ -35,12 +35,13 @@ export const AddTextNodeForm: React.FC<AddTextNodeFormProps> = ({
           className="textNode__add__input"
           value={newTextNode}
           onChange={handleChange}
+          name="add search bar"
         ></input>
         <div className="textNode__add__priority--container">
           <span className="textNode__add__priority--text">Priority: </span>
           <select
             onChange={handlePriority}
-            name="text-node"
+            name="priority selection"
             id="text-node-select"
             value={priority}
             className="textNode__select"
@@ -51,6 +52,7 @@ export const AddTextNodeForm: React.FC<AddTextNodeFormProps> = ({
           </select>
         </div>
         <button
+          name="submit text node"
           className="textNode__add--btn"
           type="submit"
           onClick={handleSumbit}

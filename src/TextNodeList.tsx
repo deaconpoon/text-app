@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useRef, FormEvent } from "react";
 import { TextNodeItem } from "./TextNodeItem";
 import { findIndex, Position } from "./find-index";
 import cookie from "js-cookie";
@@ -12,7 +12,6 @@ interface TextNodeListProps {
   setTextNodeText: SetTextNodeText;
   deleteTextNode: DeleteTextNode;
   searchTextNode: SearchTextNode;
-
   query: string;
 }
 
@@ -24,7 +23,6 @@ export const TextNodeList: React.FC<TextNodeListProps> = ({
   setTextNodeText,
   deleteTextNode,
   searchTextNode,
-
   query,
 }) => {
   //Store searched text node in local state
@@ -64,23 +62,37 @@ export const TextNodeList: React.FC<TextNodeListProps> = ({
     });
   }, [textNodes]);
 
+  /*   const handleSort = (e: FormEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    sortTextNodes("high");
+    console.log("textNodes sorted");
+
+    setFilteredTextNodes(textNodes);
+    console.log("filtered textNodes sorted");
+  }; */
+
   return (
-    <ul className="textNode-list">
-      {filteredTextNodes.map((textNode, i) => {
-        return (
-          <TextNodeItem
-            key={textNode.text}
-            textNode={textNode}
-            toggleTextNode={toggleTextNode}
-            setTextNodePriority={setTextNodePriority}
-            setTextNodeText={setTextNodeText}
-            deleteTextNode={deleteTextNode}
-            setPosition={setPosition}
-            moveItem={moveItem}
-            i={i}
-          ></TextNodeItem>
-        );
-      })}
-    </ul>
+    <div>
+      {/*  <form>
+        <button onClick={(e) => handleSort(e)}>sort!</button>
+      </form> */}
+      <ul className="textNode-list">
+        {filteredTextNodes.map((textNode, i) => {
+          return (
+            <TextNodeItem
+              key={textNode.text}
+              textNode={textNode}
+              toggleTextNode={toggleTextNode}
+              setTextNodePriority={setTextNodePriority}
+              setTextNodeText={setTextNodeText}
+              deleteTextNode={deleteTextNode}
+              setPosition={setPosition}
+              moveItem={moveItem}
+              i={i}
+            ></TextNodeItem>
+          );
+        })}
+      </ul>
+    </div>
   );
 };
