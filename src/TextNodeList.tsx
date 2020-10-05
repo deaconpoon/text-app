@@ -55,6 +55,15 @@ export const TextNodeList: React.FC<TextNodeListProps> = ({
     setFilteredTextNodes(filtered);
   }, [query, textNodes]);
 
+  //Delete text node if the content is empty
+  useEffect(() => {
+    textNodes.map((textNode) => {
+      if (textNode.text == "") {
+        deleteTextNode(textNode);
+      }
+    });
+  }, [textNodes]);
+
   return (
     <ul className="textNode-list">
       {filteredTextNodes.map((textNode, i) => {

@@ -4,12 +4,9 @@ import React, {
   useEffect,
   FormEvent,
   useRef,
-  useCallback,
 } from "react";
 
 import { motion, useMotionValue } from "framer-motion";
-
-import trash from "./asset/delete.svg";
 
 interface TextNodeItemProps {
   textNode: TextNode;
@@ -17,7 +14,7 @@ interface TextNodeItemProps {
   setTextNodePriority: SetTextNodePriority;
   setTextNodeText: SetTextNodeText;
   deleteTextNode: DeleteTextNode;
-
+  key: string;
   setPosition: any;
   moveItem: any;
   i: number;
@@ -29,7 +26,7 @@ export const TextNodeItem: React.FC<TextNodeItemProps> = ({
   setTextNodePriority,
   setTextNodeText,
   deleteTextNode,
-
+  key,
   setPosition,
   moveItem,
   i,
@@ -43,6 +40,7 @@ export const TextNodeItem: React.FC<TextNodeItemProps> = ({
   // This will allow us to measure its height and position, which will be useful to
   // decide when a dragging element should switch places with its siblings.
   const ref = useRef<any>(null);
+  const textRef = useRef<any>(null);
 
   // By manually creating a reference to `dragOriginY` we can manipulate this value
   // if the user is dragging this DOM element while the drag gesture is active to
@@ -62,8 +60,6 @@ export const TextNodeItem: React.FC<TextNodeItemProps> = ({
     transition: { delay: 0.3 },
   };
 
-  //every time the select value change, set the textNode.priority to the new value
-
   const handlePriority = (e: ChangeEvent<HTMLSelectElement>) => {
     setPriority(Number(e.target.value));
   };
@@ -80,13 +76,17 @@ export const TextNodeItem: React.FC<TextNodeItemProps> = ({
     setTextNodePriority(textNode, priority);
   }, [priority]);
 
-  //On every keystroke change, it updates the content in text area into the textNode text property
+  //To fix text area lose focus bug
+
+  //https://stackoverflow.com/questions/59199797/react-input-loses-focus-after-each-keystroke
+
   useEffect(() => {
-    setTextNodeText(textNode, text);
+    textRef.current.focus();
   }, [text]);
 
   return (
     <motion.li
+      key={key}
       style={
         priority == 1
           ? { borderLeft: "10px solid lightpink" }
@@ -131,10 +131,12 @@ export const TextNodeItem: React.FC<TextNodeItemProps> = ({
           onChange={() => toggleTextNode(textNode)}
         ></input>
         <textarea
-          key={textNode.text}
+          ref={textRef}
           className="textNode__textarea"
           value={text}
-          onChange={(e) => setText(e.target.value)}
+          onChange={handleText}
+          name="text node content"
+          onBlur={() => setTextNodeText(textNode, text)}
         ></textarea>
         <div className="textNode__add__priority--container">
           <span className="textNode__add__priority--text">Priority: </span>
