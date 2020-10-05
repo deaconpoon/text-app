@@ -2,7 +2,9 @@ https://elastic-mahavira-834e4e.netlify.app
 
 # 📝 Textify is a web-based, free-text note organizer
 
-<source src="/public/text-demo.mp4" type="video/mp4" width="660">
+<video controls width="660">
+<source src="/public/text-demo.mp4" type="video/mp4" >
+</video>
 
 ## ✅ Features
 
