@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import { TextNodeItem } from "./TextNodeItem";
 import { findIndex, Position } from "./find-index";
+import cookie from "js-cookie";
 import move from "array-move";
 
 interface TextNodeListProps {
@@ -40,7 +41,10 @@ export const TextNodeList: React.FC<TextNodeListProps> = ({
   // sibling.
   const moveItem = (i: number, dragOffset: number) => {
     const targetIndex = findIndex(i, dragOffset, positions);
-    if (targetIndex !== i) setTextNodes(move(textNodes, i, targetIndex));
+    if (targetIndex !== i) {
+      setTextNodes(move(textNodes, i, targetIndex));
+    }
+    cookie.set("textNodes", JSON.stringify(textNodes));
   };
 
   //Every the query and textNodes change, save the result to local state
