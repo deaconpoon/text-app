@@ -137,7 +137,6 @@ input[type="checkbox"] {
 
 //Component class
 .body {
-  padding: 2em;
 }
 
 .app {
@@ -158,6 +157,9 @@ input[type="checkbox"] {
   }
   &__upperSection {
     margin-bottom: 40px;
+  }
+  &__container {
+    padding: 1.8em;
   }
 }
 

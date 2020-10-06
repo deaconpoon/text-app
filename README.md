@@ -18,7 +18,7 @@ https://elastic-mahavira-834e4e.netlify.app
 - Built with Typescript and Sass for styling
 - Framer motion for dragging animation
 
-## 😠 Challenges
+## 🤔 Challenges
 
 - First time implementing Typescript. Steep learning curve at first but types checking with VS Code intellisense becomes useful to ensure the application is robust and stable
 - TextNode local states change e.g. editing content causes the application to re-render which produces input focus lost when typing bug. I solved the problem by setting the input focus after every key strokes but it is not an ideal solution.

@@ -99,22 +99,24 @@ const App: React.FC = () => {
   return (
     <body className="body">
       <main className="app">
-        <div className="app__title">TEXTIFY</div>
-        <div className="app__upperSection">
-          <AddTextNodeForm addTextNode={addTextNode}></AddTextNodeForm>
-          <SearchBar query={query} setQuery={setQuery}></SearchBar>
-        </div>
+        <div className="app__container">
+          <div className="app__title">TEXTIFY</div>
+          <div className="app__upperSection">
+            <AddTextNodeForm addTextNode={addTextNode}></AddTextNodeForm>
+            <SearchBar query={query} setQuery={setQuery}></SearchBar>
+          </div>
 
-        <TextNodeList
-          query={query}
-          searchTextNode={searchTextNode}
-          textNodes={textNodes}
-          setTextNodes={setTextNodes}
-          toggleTextNode={toggleTextNode}
-          setTextNodePriority={setTextNodePriority}
-          setTextNodeText={setTextNodeText}
-          deleteTextNode={deleteTextNode}
-        ></TextNodeList>
+          <TextNodeList
+            query={query}
+            searchTextNode={searchTextNode}
+            textNodes={textNodes}
+            setTextNodes={setTextNodes}
+            toggleTextNode={toggleTextNode}
+            setTextNodePriority={setTextNodePriority}
+            setTextNodeText={setTextNodeText}
+            deleteTextNode={deleteTextNode}
+          ></TextNodeList>
+        </div>
       </main>
     </body>
   );
