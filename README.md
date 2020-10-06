@@ -27,7 +27,7 @@ https://elastic-mahavira-834e4e.netlify.app
 
 - Implement global state management tools such as Context API or Redux to ensure state immutability
 - Given no time constrain, I will implement categories sorting button and tags
-- Utilize Typescript utility types to more flexibility
+- Utilize Typescript utility types for more flexibility
 - Testing with jest
 
 ## 🚀 To start
