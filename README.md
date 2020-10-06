@@ -1,4 +1,4 @@
-https://elastic-mahavira-834e4e.netlify.app
+https://naughty-meitner-c101d7.netlify.app
 
 # 📝 Textify is a web-based, free-text note organizer
 
